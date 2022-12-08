@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_Qualified__c</fullName>
+    <externalId>false</externalId>
+    <label>Not Qualified</label>
+    <summaryFilterItems>
+        <field>Opportunity.Quality__c</field>
+        <operation>equals</operation>
+        <value>Poor quality</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <type>Summary</type>
+</CustomField>

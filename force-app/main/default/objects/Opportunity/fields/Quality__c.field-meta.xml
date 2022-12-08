@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quality__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF
+(
+AND
+(
+  (Amount == 0), 
+  (ISBLANK(OrderNumber__c)),  
+  (ISBLANK(TEXT(Type))) 
+) ,
+&quot;Poor quality&quot;,
+  IF 
+  ( 
+    AND
+    ( 
+      (Amount &gt; 0),
+      (ISBLANK(OrderNumber__c)),
+      (!ISBLANK(TEXT(Type))) 
+    ),
+    &quot;Medium quality&quot;,
+    IF 
+    ( 
+      AND
+      ( 
+         (Amount &gt; 0),  
+         (!ISBLANK(OrderNumber__c)), 
+         (!ISBLANK(TEXT(Type)))
+      ),
+      &quot;Good quality&quot;,
+      &quot;&quot;
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Quality</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
